@@ -47,6 +47,7 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
+        // 1. EL TEXTO DINÁMICO (Lo que ya tenías)
         var typed = new Typed('#texto-dinamico', {
             strings: [
                 'Welcome to my personal portfolio!', 
@@ -57,6 +58,40 @@
             backSpeed: 40,
             backDelay: 1500,
             loop: true
+        });
+
+        // 2. EL MENÚ INTELIGENTE (Scrollspy)
+        const menu = document.querySelector('.menu-superior');
+        const secciones = document.querySelectorAll('.seccion');
+        const enlaces = document.querySelectorAll('.menu-superior a');
+
+        window.addEventListener('scroll', () => {
+            // A. Cambiar el fondo del menú si bajamos más de 50 píxeles
+            if (window.scrollY > 50) {
+                menu.classList.add('scrolled');
+            } else {
+                menu.classList.remove('scrolled');
+            }
+
+            // B. Detectar en qué sección estamos
+            let seccionActual = '';
+            
+            secciones.forEach(seccion => {
+                const inicioSeccion = seccion.offsetTop;
+                // Restamos 150 píxeles para que se ilumine un poco antes de llegar al título exacto
+                if (scrollY >= (inicioSeccion - 150)) {
+                    seccionActual = seccion.getAttribute('id');
+                }
+            });
+
+            // C. Iluminar la pestaña correcta
+            enlaces.forEach(enlace => {
+                enlace.classList.remove('activo'); // Limpiamos todas las pestañas
+                // Si el enlace coincide con la sección actual, lo iluminamos
+                if (enlace.getAttribute('href') === '#' + seccionActual) {
+                    enlace.classList.add('activo');
+                }
+            });
         });
     </script>
 </body>
