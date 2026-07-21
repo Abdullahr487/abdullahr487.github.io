@@ -1,77 +1,174 @@
-/* Configuración base (Fondo y fuente) */
+/* Paleta de colores Toha */
+:root {
+    --fondo-web: #f4f6f9;
+    --fondo-tarjeta: #ffffff;
+    --texto-principal: #343a40;
+    --texto-secundario: #6c757d;
+    --azul-toha: #007bff;
+    --borde: #edf2f9;
+}
+
+/* Configuración Base */
 body {
     font-family: 'Mulish', sans-serif;
-    background-color: #f4f6f9; /* El tono gris/azulado claro de Toha */
-    color: #333333;
+    background-color: var(--fondo-web);
+    color: var(--texto-principal);
     margin: 0;
     padding: 0;
+    line-height: 1.6;
+}
+
+/* Estructura a dos columnas */
+.contenedor-toha {
     display: flex;
-    justify-content: center;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 30px; /* Separación entre sidebar y contenido */
+    align-items: flex-start;
 }
 
-/* Centramos todo y le damos un ancho máximo */
-.contenedor {
-    width: 90%;
-    max-width: 800px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-/* El estilo de las "Tarjetas" flotantes blancas */
+/* Base de todas las tarjetas blancas */
 .tarjeta {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra suave */
-    margin-bottom: 30px;
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px;
+    box-shadow: 0 0 35px 0 rgba(154,161,171,.15); /* Sombra estilo Toha */
+    border: 1px solid var(--borde);
+    padding: 30px;
 }
 
-/* Centrar el texto de la cabecera */
-.hero {
+/* BARRA LATERAL */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
     text-align: center;
+    position: sticky;
+    top: 40px; /* Se queda fija al hacer scroll */
 }
 
-/* Diseño para el hueco de tu futura foto */
 .foto-perfil {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     background-color: #e0e5ec;
-    border-radius: 50%; /* La hace redonda */
+    border-radius: 50%;
     margin: 0 auto 20px auto;
-    border: 5px solid #ffffff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Estilos de tipografía */
-h1 {
-    font-size: 2.5em;
-    font-weight: 900;
-    margin: 0 0 10px 0;
-    color: #1a1a1a;
+.sidebar h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
 }
 
-h2 {
-    font-size: 1.2em;
+.sidebar h2 {
+    font-size: 1em;
+    color: var(--texto-secundario);
     font-weight: 400;
-    color: #007bff; /* Azul corporativo */
     margin: 0 0 20px 0;
 }
 
-h3 {
-    font-size: 1.5em;
-    border-bottom: 2px solid #e0e5ec;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+.datos-contacto p {
+    font-size: 0.9em;
+    color: var(--texto-secundario);
+    margin: 5px 0;
 }
 
-/* Pequeño detalle visual para la tarjeta de experiencia */
-.experiencia {
-    border-left: 5px solid #007bff;
-    padding: 25px;
+/* ÁREA PRINCIPAL */
+.contenido-principal {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Separación entre secciones */
+}
+
+.seccion h3 {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--borde);
+    color: #2b3137;
+}
+
+/* Experiencia */
+.item-experiencia {
+    margin-bottom: 25px;
+    padding-left: 20px;
+    border-left: 3px solid var(--azul-toha);
+}
+
+.item-experiencia:last-child {
+    margin-bottom: 0;
+}
+
+.cabecera-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cabecera-item h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #2b3137;
+}
+
+.fecha {
+    font-size: 0.85em;
+    background-color: #e9ecef;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: var(--texto-secundario);
+    font-weight: 600;
 }
 
 .empresa {
-    color: #666;
-    font-weight: bold;
+    color: var(--azul-toha);
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    font-size: 0.95em;
+}
+
+.descripcion {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.95em;
+}
+
+/* Habilidades (Estilo Etiquetas/Píldoras) */
+.contenedor-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.etiqueta {
+    background-color: var(--fondo-web);
+    border: 1px solid var(--borde);
+    color: var(--texto-principal);
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* Adaptación para móviles (Pantallas pequeñas) */
+@media (max-width: 768px) {
+    .contenedor-toha {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        box-sizing: border-box;
+        position: static; /* Deja de estar fija en móvil */
+    }
+    
+    .cabecera-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
 }
