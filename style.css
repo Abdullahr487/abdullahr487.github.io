@@ -51,7 +51,10 @@ h1 {
     justify-content: center;
     
     /* Fondo temporal (cambia el nombre de tu imagen aquí si pones una) */
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background-image: url('fondo2.jpg');
+    background-size: cover; /* Hace que la imagen ocupe toda la pantalla sin deformarse */
+    background-position: center; /* Centra la imagen */
+    
     color: white;
 }
 
